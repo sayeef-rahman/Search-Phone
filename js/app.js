@@ -43,9 +43,10 @@ const displaySearchResult = data =>{
         div.innerHTML= `
         <div class="card">
             <img src="${phone.image}" class="card-img-top w-50 mx-auto mt-2 mb-3" alt="...">
+            <p class="bg-dark rounded-pill p-2 text-light mx-3 text-center">${phone.brand}</p>
             <div class="card-body">
-                <h5 class="card-title mb-3">${phone.phone_name}<span class="bg-dark rounded-pill p-2 text-light mx-3">${phone.brand}</span></h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h5 class="card-title mb-3">${phone.phone_name}</h5>
+                <a href="#" class="btn btn-primary">Show Details</a>
                 
             </div>
       </div>
