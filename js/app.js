@@ -33,6 +33,7 @@ const searchPhoe = () => {
 
 const displaySearchResult = data =>{
     const searchResult = document.getElementById('search-result');
+    searchResult.innerHTML="";
     // searchResult.textContent = '';
     // console.log(data.length);
     data.forEach(phone => {
@@ -41,10 +42,11 @@ const displaySearchResult = data =>{
         div.classList.add('col');
         div.innerHTML= `
         <div class="card">
-            <img src="${phone.image}" class="card-img-top img-fluid" alt="...">
+            <img src="${phone.image}" class="card-img-top w-50 mx-auto mt-2 mb-3" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title mb-3">${phone.phone_name}<span class="bg-dark rounded-pill p-2 text-light mx-3">${phone.brand}</span></h5>
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                
             </div>
       </div>
       `;
