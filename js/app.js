@@ -32,6 +32,7 @@ const searchPhoe = () => {
 };
 
 const displaySearchResult = data =>{
+    console.log(data);
     const searchResult = document.getElementById('search-result');
     searchResult.innerHTML="";
     // searchResult.textContent = '';
@@ -43,7 +44,7 @@ const displaySearchResult = data =>{
         div.innerHTML= `
         <div class="card">
             <img src="${phone.image}" class="card-img-top w-50 mx-auto mt-2 mb-3" alt="...">
-            <p class="bg-dark rounded-pill p-2 text-light mx-3 text-center">${phone.brand}</p>
+            <p class="bg-dark rounded-pill p-2 text-light mx-3 text-center w-50 mx-auto">${phone.brand}</p>
             <div class="card-body">
                 <h5 class="card-title mb-3">${phone.phone_name}</h5>
                 <a href="#" class="btn btn-primary">Show Details</a>
@@ -54,9 +55,4 @@ const displaySearchResult = data =>{
     searchResult.appendChild(div);
 
     })
-
 }
-/*
- 
-
-*/
