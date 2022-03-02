@@ -32,23 +32,29 @@ const searchPhoe = () => {
 };
 
 const displaySearchResult = data =>{
-    console.log(data);
+    
     const searchResult = document.getElementById('search-result');
     searchResult.innerHTML="";
-    // searchResult.textContent = '';
-    // console.log(data.length);
+    
+    // Show Details for Every Phone
+    // console.log("in show",data);
+    // for(let i=0; i < data.length; i++){
+    //     console.log("slug-",i,": ",data[i].slug);
+    // }
+
+    //Main Display Done
     data.forEach(phone => {
-        console.log(phone);
+        let phoneId = phone.slug;
+        //console.log(phoneId);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML= `
-        <div class="card">
+        <div class="card shadow">
             <img src="${phone.image}" class="card-img-top w-50 mx-auto mt-2 mb-3" alt="...">
             <p class="bg-dark rounded-pill p-2 text-light mx-3 text-center w-50 mx-auto">${phone.brand}</p>
             <div class="card-body">
                 <h5 class="card-title mb-3">${phone.phone_name}</h5>
-                <a href="#" class="btn btn-primary">Show Details</a>
-                
+                <button class="btn btn-primary" onclick="showDetails('${phoneId}')">Show Details</button>
             </div>
       </div>
       `;
@@ -56,3 +62,31 @@ const displaySearchResult = data =>{
 
     })
 }
+
+const showDetails = id =>{
+    //console.log("phone id:",id);
+    const url= `https://openapi.programming-hero.com/api/phone/${id}`;
+    console.log(url);
+    fetch(url)
+        .then(res => res.json())
+        .then(phone => displayPhoneDetail(phone.data));
+}
+
+const displayPhoneDetail = data => {
+    console.log(data);
+    const phoneDetails = document.getElementById('phone-details');
+    const searchResult = document.getElementById('search-result');
+    searchResult.innerHTML=''; 
+    phoneDetails.innerHTML='';
+    const div = document.createElement('div');
+    div.classList.add('col');
+    div.innerHTML = `
+    <h1 class="p-3 text-center text-primary">Detils Information</h1>
+        <h5 class="card-title fs-1">${data.name}</h5>
+        <img src="${data.image}" class="card-img-top w-50 mx-auto mt-2 mb-3" alt="...">
+    <p><a href="" class="btn btn-primary">Buy Now</a></p>
+    `;
+    phoneDetails.appendChild(div);
+}
+
+{/* <p class="card-text">${meal.strInstructions.slice(0, 150)}</p> */}
